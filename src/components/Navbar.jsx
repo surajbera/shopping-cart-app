@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import '../styles/navbar.scss'
 
 const Navbar = () => {
+  const { cartProductIds } = useSelector((state) => state.cart)
+
   return (
     <nav className='navbar'>
       <div className='container'>
@@ -31,7 +34,7 @@ const Navbar = () => {
             className={({ isActive }) => `${isActive && 'selected'}`}
           >
             <i className='bi bi-cart3' />
-            <sup className='cart-number'>7</sup>
+            <sup className='cart-number'>{cartProductIds.length}</sup>
           </NavLink>
         </div>
       </div>
